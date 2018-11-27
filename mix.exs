@@ -41,7 +41,8 @@ defmodule Exodust.MixProject do
       {:nerves, "~> 1.3", runtime: false},
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
-      {:toolshed, "~> 0.2"}
+      {:toolshed, "~> 0.2"},
+      {:nerves_uart, "~> 1.2"}
     ] ++ deps(@target)
   end
 
