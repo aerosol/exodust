@@ -5,9 +5,10 @@ PM2.5/PM10 pollution sensor built with Nerves.
 Roadmap:
 
   1. Target builds:
-    - Local UART (QinHeng Electronics HL-340)
-    - UART (Raspberry Pi)
-    - GPIO (NodeMCU V3/ESP8266-12)
+  
+       - Local UART (QinHeng Electronics HL-340)
+       - UART (Raspberry Pi)
+       - GPIO (NodeMCU V3/ESP8266-12)
 
 ## Local UART (QinHeng Electronics HL-340)
 
