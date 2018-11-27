@@ -2,6 +2,8 @@
 
 PM2.5/PM10 pollution sensor built with Nerves.
 
+![](https://media1.giphy.com/media/l0Ex6wnvlMC4zPhtu/giphy.gif?cid=3640f6095bfdc8372f6b52466b0ec0bf)
+
 Roadmap:
 
   1. Target builds:
