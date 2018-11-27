@@ -14,9 +14,8 @@ Roadmap:
 
 ### Prerequisites
 
-Kernel modules:
-
-  - [ch341](https://aur.archlinux.org/packages/i2c-ch341-dkms/)
+  - Kernel module: [ch341](https://aur.archlinux.org/packages/i2c-ch341-dkms/)
+  - Group membership: `sudo gpasswd -a $NERVES_USER uucp`
 
 ## RPi
 
