@@ -1,9 +1,5 @@
 defmodule Exodust.SDS011 do
-  defmodule Probe do
-    defstruct pm25: 0,
-              pm10: 0
-  end
-
+  alias Exodust.Probe
   defmodule UnsupportedMessageError, do: defexception [:message]
 
   @header <<0xAA, 0xC0>>
