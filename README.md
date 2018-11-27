@@ -7,10 +7,10 @@ Roadmap:
   1. Target builds:
   
        - Local UART (QinHeng Electronics HL-340)
-       - UART (Raspberry Pi)
+       - GPIO/UART (Raspberry Pi)
        - GPIO (NodeMCU V3/ESP8266-12)
 
-## Local UART (QinHeng Electronics HL-340)
+## Local UART
 
 ### Prerequisites
 
@@ -18,11 +18,11 @@ Kernel modules:
 
   - [ch341](https://aur.archlinux.org/packages/i2c-ch341-dkms/)
 
-## UART (RPi)
+## RPi
 
 TBD
 
-## GPIO (NodeMCU)
+## NodeMCU
 
 TBD
 
