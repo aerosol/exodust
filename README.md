@@ -1,7 +1,34 @@
+# Exodust
+
+PM2.5/PM10 pollution sensor built with Nerves.
+
+Roadmap:
+
+  1. Target builds:
+    - Local UART (QinHeng Electronics HL-340)
+    - UART (Raspberry Pi)
+    - GPIO (NodeMCU V3/ESP8266-12)
+
+## Local UART (QinHeng Electronics HL-340)
+
+### Prerequisites
+
+Kernel modules:
+
+  - [ch341](https://aur.archlinux.org/packages/i2c-ch341-dkms/)
+
+## UART (RPi)
+
+TBD
+
+## GPIO (NodeMCU)
+
+TBD
+
 # SDS011
 
 ## Interface specification:
- 
+
 Pin | Name | explain                                        |
 --- | ---- | ---------------------------------------------- |
 1   | CTL  | Control pin, reserved                          |
@@ -13,20 +40,20 @@ Pin | Name | explain                                        |
 7   | T    | Serial port transmission TX                    |
 
 The pitch of Interface is 2.54mm
- 
+
 ## Communication protocol:
- 
+
 Serial communication protocol: 9600 8N1. (Rate of 9600, data bits 8, parity none, stop bits 1)
 
 Serial report communication cycle: 1+0.5 seconds
 
-Data frame (10 bytes): 
+Data frame (10 bytes):
 
 ```
 message header + order+ data(6 bytes) + checksum + message trailer
 ```
 
-The number of bytes | Name            | Content         | 
+The number of bytes | Name            | Content         |
 ------------------- | --------------- | --------------- |
 0                   | message header  | AA              |
 1                   | order           | C0              |
