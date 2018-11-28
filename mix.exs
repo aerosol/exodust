@@ -43,7 +43,6 @@ defmodule Exodust.MixProject do
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
       {:nerves_uart, "~> 1.2"},
-      {:nerves_init_gadget, "~> 0.3"}
     ] ++ deps(@target)
   end
 
@@ -56,7 +55,7 @@ defmodule Exodust.MixProject do
     ] ++ system(target)
   end
 
-  defp system("rpi"), do: [{:nerves_system_rpi, "~> 1.5", runtime: false}]
+  defp system("rpi"), do: [{:nerves_system_rpi, "~> 1.5", runtime: false}, {:nerves_init_gadget, "~> 0.3"}]
   defp system("rpi0"), do: [{:nerves_system_rpi0, "~> 1.5", runtime: false}]
   defp system("rpi2"), do: [{:nerves_system_rpi2, "~> 1.5", runtime: false}]
   defp system("rpi3"), do: [{:nerves_system_rpi3, "~> 1.5", runtime: false}]
