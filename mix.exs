@@ -31,7 +31,7 @@ defmodule Exodust.MixProject do
   def application do
     [
       mod: {Exodust.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 
@@ -42,7 +42,8 @@ defmodule Exodust.MixProject do
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
-      {:nerves_uart, "~> 1.2"}
+      {:nerves_uart, "~> 1.2"},
+      {:nerves_init_gadget, "~> 0.3"}
     ] ++ deps(@target)
   end
 

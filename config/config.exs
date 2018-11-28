@@ -15,8 +15,26 @@ config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 # involved with firmware updates.
 
 config :shoehorn,
-  init: [:nerves_runtime],
+  init: [:nerves_runtime, :nerves_init_gadget],
   app: Mix.Project.config()[:app]
+
+config :nerves_firmware_ssh,
+authorized_keys: [
+  File.read!(Path.join(System.user_home!, ".ssh/id_rsa.pub"))
+]
+
+key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") || "WPA-PSK"
+
+config :nerves_network, :default,
+  wlan0: [
+    ssid: String.trim(File.read!(Path.join(System.user_home!, ".exodust_ssid"))),
+    psk: String.trim(File.read!(Path.join(System.user_home!, ".exodust_psk"))),
+    key_mgmt: String.to_atom(key_mgmt)
+  ],
+  eth0: [
+    ipv4_address_method: :dhcp
+  ]
+
 
 # Use Ringlogger as the logger backend and remove :console.
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
