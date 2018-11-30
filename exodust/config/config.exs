@@ -39,7 +39,8 @@ config :nerves_network, :default,
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
 # configuring ring_logger.
 
-config :logger, backends: [RingLogger]
+config :logger, 
+  backends: [RingLogger, :console]
 
 # Configures the endpoint
 config :ui, UiWeb.Endpoint,
@@ -50,7 +51,16 @@ config :ui, UiWeb.Endpoint,
   code_reloader: true,
   secret_key_base: "mjI6jctBDtEoGKb8UdcHM1+/YWr4WomQ/3Er5UQJoNC0/KT3fQv1pc8LD/+3kIfb",
   render_errors: [view: UiWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Ui.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Ui.PubSub, adapter: Phoenix.PubSub.PG2],
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../../ui/assets", __DIR__)
+    ]
+  ]
 
 config :ui, UiWeb.Endpoint,
   live_reload: [
@@ -64,11 +74,6 @@ config :ui, UiWeb.Endpoint,
 
 config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
-
-# Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
