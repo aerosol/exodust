@@ -42,7 +42,7 @@ defmodule Exodust.MixProject do
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
-      {:nerves_uart, "~> 1.2"},
+      {:nerves_uart, "~> 1.2"}
     ] ++ deps(@target)
   end
 

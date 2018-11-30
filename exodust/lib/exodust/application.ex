@@ -17,8 +17,7 @@ defmodule Exodust.Application do
   # List all child processes to be supervised
   def children("host") do
     [
-      # Starts a worker by calling: Exodust.Worker.start_link(arg)
-      # {Exodust.Worker, arg},
+      {Nerves.UART, name: :exodust_uart}
     ]
   end
 
