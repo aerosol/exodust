@@ -2,7 +2,7 @@ defmodule UiWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", UiWeb.RoomChannel
+  channel "room:*", UiWeb.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
