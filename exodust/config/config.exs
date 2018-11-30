@@ -41,8 +41,34 @@ config :nerves_network, :default,
 
 config :logger, backends: [RingLogger]
 
-# Import target specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-# Uncomment to use target specific configurations
+# Configures the endpoint
+config :ui, UiWeb.Endpoint,
+  url: [host: "localhost"],
+  http: [port: 4000],
+  debug_errors: true,
+  server: true,
+  code_reloader: true,
+  secret_key_base: "mjI6jctBDtEoGKb8UdcHM1+/YWr4WomQ/3Er5UQJoNC0/KT3fQv1pc8LD/+3kIfb",
+  render_errors: [view: UiWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Ui.PubSub, adapter: Phoenix.PubSub.PG2]
 
-# import_config "#{Mix.Project.config[:target]}.exs"
+config :ui, UiWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
+      ~r{lib/ui_web/views/.*(ex)$},
+      ~r{lib/ui_web/templates/.*(eex)$}
+    ]
+  ]
+
+config :phoenix, :stacktrace_depth, 20
+config :phoenix, :plug_init_mode, :runtime
+
+# Configures Elixir's Logger
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
