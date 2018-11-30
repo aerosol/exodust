@@ -7,7 +7,19 @@
     <title>Ui · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
-  <body>
-    Exodust!
+  <body id="main">
+    <input type="text" value="ttyUSB0" id="uart_tty"/>
+    <input type="button" value="Run UART Collector" id="uart_run"/>
+
+    <pre id="status">
+    </pre>
+
+    <div id="sensor">
+      <h1>PM25: <span id="pm25"></span></h1>
+      <h1>PM10: <span id="pm10"></span></h1>
+      <h1>Rating: <span id="rating"></span></h1>
+    </div>
+
   </body>
+  <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 </html>
