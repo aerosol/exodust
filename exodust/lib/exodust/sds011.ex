@@ -1,6 +1,6 @@
 defmodule Exodust.SDS011 do
   alias Exodust.Probe
-  defmodule UnsupportedMessageError, do: defexception [:message]
+  defmodule(UnsupportedMessageError, do: defexception([:message]))
 
   @header <<0xAA, 0xC0>>
   @trailer 0xAB
@@ -12,10 +12,10 @@ defmodule Exodust.SDS011 do
 
   def decode_sds011!(<<@header::binary, d1, d2, d3, d4, d5, d6, checksum, @trailer>>)
       when rem(d1 + d2 + d3 + d4 + d5 + d6, 256) == checksum do
-    %Probe{
-      pm25: (d2 * 256 + d1) / 10,
-      pm10: (d4 * 256 + d3) / 10
-    }
+    pm25 = (d2 * 256 + d1) / 10
+    pm10 = (d4 * 256 + d3) / 10
+
+    %{pm25: pm25, pm10: pm10, rating: Exodust.AQI.rate(pm25, pm10)}
   end
 
   def decode_sds011!(<<@header::binary, _::size(48), checksum, @trailer>>) do
